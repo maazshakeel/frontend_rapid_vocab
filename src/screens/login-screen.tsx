@@ -1,20 +1,16 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
+import { Text, View, Image } from "react-native";
+import { styles } from "../styles/LoginScreen.styles";
 
 export default function LoginScreen({ navigation }): JSX.Element {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Login Screen!</Text>
-      <Button
-        title="Go to register screen!"
-        onPress={() => navigation.navigate("Register")}
-      />
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../../assets/images/login_register_screen.png")}
+          style={styles.headerImage}
+        />
+      </View>
     </View>
   );
 }
