@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
     width: 350,
     height: 240,
   },
+  headerText: {
+    fontWeight: "bold",
+    fontSize: 32,
+    color: "white",
+    fontFamily: "serif",
+    alignSelf: "center",
+  },
 });
 
 export { styles };

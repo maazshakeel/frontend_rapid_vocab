@@ -11,6 +11,7 @@ export default function LoginScreen({ navigation }): JSX.Element {
           style={styles.headerImage}
         />
       </View>
+      <Text style={styles.headerText}>Learn Rapidly</Text>
     </View>
   );
 }
