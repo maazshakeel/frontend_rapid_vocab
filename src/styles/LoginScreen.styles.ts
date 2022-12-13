@@ -22,6 +22,59 @@ const styles = StyleSheet.create({
     fontFamily: "serif",
     alignSelf: "center",
   },
+  inputContainer: {
+    backgroundColor: "white",
+    width: 385,
+    height: 450,
+    marginTop: 13,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    alignSelf: "center",
+    alignItems: "center",
+    flex: 1,
+  },
+  emailInput: {
+    backgroundColor: colors.GREY,
+    width: 335,
+    height: 70,
+    marginTop: 25,
+    borderRadius: 24,
+    fontSize: 15,
+    paddingLeft: 50,
+  },
+  forgotText: {
+    color: "#83AEEF",
+    alignSelf: "flex-end",
+    marginRight: 35,
+    marginTop: 10,
+  },
+  loginButton: {
+    width: 335,
+    height: 65,
+    backgroundColor: colors.PRIMARY,
+    borderRadius: 24,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
+  },
+  textLoginButton: {
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 15,
+  },
+  bottomTextGrey: {
+    color: colors.GREY,
+    fontWeight: "bold",
+    marginRight: 10,
+  },
+  bottomTextContainer: {
+    display: "flex",
+    padding: 20,
+    flexDirection: "row",
+  },
+  bottomTextBlue: {
+    color: "#83AEEF",
+  },
 });
 
 export { styles };

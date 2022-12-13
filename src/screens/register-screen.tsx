@@ -11,10 +11,7 @@ export default function RegisterScreen({ navigation }): JSX.Element {
       }}
     >
       <Text>Register Screen!</Text>
-      <Button
-        title="Go to login screen!"
-        onPress={() => navigation.navigate("Login")}
-      />
+      <Button title="Go back!" onPress={() => navigation.goBack()} />
     </View>
   );
 }
