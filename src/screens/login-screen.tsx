@@ -6,6 +6,7 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from "react-native";
 import { styles } from "../styles/LoginScreen.styles";
 
@@ -19,7 +20,7 @@ export default function LoginScreen({ navigation }): JSX.Element {
         />
       </View>
       <Text style={styles.headerText}>Learn Rapidly</Text>
-      <SafeAreaView style={styles.inputContainer}>
+      <KeyboardAvoidingView behavior="height" style={styles.inputContainer}>
         <TextInput placeholder="Email ID" style={styles.emailInput} />
         <TextInput
           secureTextEntry
@@ -41,7 +42,7 @@ export default function LoginScreen({ navigation }): JSX.Element {
             <Text style={styles.bottomTextBlue}>Register</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </KeyboardAvoidingView>
     </View>
   );
 }
