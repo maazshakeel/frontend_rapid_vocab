@@ -1,6 +1,10 @@
 import { StyleSheet } from "react-native";
 import colors from "../theme";
 
+import { width, height } from "../utils/dimension.utils";
+
+console.log(width, height);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -8,39 +12,46 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     alignItems: "center",
-    marginTop: 65,
+    marginTop: 45,
   },
   headerImage: {
     resizeMode: "stretch",
-    width: 350,
-    height: 240,
+    width: 400,
+    height: 290,
   },
   headerText: {
     fontWeight: "bold",
-    fontSize: 32,
+    fontSize: 30,
     color: "white",
+    marginTop: 5,
     fontFamily: "serif",
     alignSelf: "center",
   },
   inputContainer: {
     backgroundColor: "white",
     width: 385,
-    height: 450,
-    marginTop: 13,
+    height: height - 375,
     borderTopLeftRadius: 24,
+    position: "absolute",
+    bottom: 0,
     borderTopRightRadius: 24,
     alignSelf: "center",
     alignItems: "center",
-    flex: 1,
   },
   emailInput: {
     backgroundColor: colors.GREY,
-    width: 335,
-    height: 70,
+    width: width - 27,
+    height: 65,
     marginTop: 15,
     borderRadius: 24,
     fontSize: 15,
     paddingLeft: 50,
+  },
+  forgotText: {
+    color: "#83AEEF",
+    alignSelf: "flex-end",
+    marginRight: 35,
+    marginTop: 5,
   },
   loginButton: {
     width: 335,
@@ -49,7 +60,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 15,
   },
   textLoginButton: {
     fontWeight: "bold",
@@ -63,12 +74,11 @@ const styles = StyleSheet.create({
   },
   bottomTextContainer: {
     display: "flex",
+    width: 300,
+    justifyContent: "center",
+    flexWrap: "wrap",
     padding: 20,
     flexDirection: "row",
-    width: 435,
-    flexWrap: "wrap",
-    alignItems: "center",
-    justifyContent: "center",
   },
   bottomTextBlue: {
     color: "#83AEEF",
