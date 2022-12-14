@@ -4,7 +4,7 @@ import {
   View,
   Image,
   TextInput,
-  SafeAreaView,
+  ScrollView,
   TouchableOpacity,
   KeyboardAvoidingView,
 } from "react-native";
@@ -20,16 +20,20 @@ export default function ForgotPasswordScreen({ navigation }): JSX.Element {
         />
       </View>
       <Text style={styles.headerText}>Forgot Password?</Text>
-      <KeyboardAvoidingView behavior="padding" style={styles.inputContainer}>
-        <Text style={styles.topTextGrey}>
-          Don’t worry! It happens. Please enter the address associated with your
-          account.
-        </Text>
-        <TextInput placeholder="Email ID" style={styles.emailInput} />
-        <TouchableOpacity style={styles.loginButton}>
-          <Text style={styles.textLoginButton}>Submit</Text>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+      <View style={styles.inputContainer}>
+        <KeyboardAvoidingView behavior="padding">
+          <ScrollView>
+            <Text style={styles.topTextGrey}>
+              Don’t worry! It happens. Please enter the address associated with
+              your account.
+            </Text>
+            <TextInput placeholder="Email ID" style={styles.emailInput} />
+            <TouchableOpacity style={styles.loginButton}>
+              <Text style={styles.textLoginButton}>Submit</Text>
+            </TouchableOpacity>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </View>
     </View>
   );
 }
