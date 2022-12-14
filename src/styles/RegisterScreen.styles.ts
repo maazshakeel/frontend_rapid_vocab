@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: "white",
-    width: 385,
+    width: width,
     height: height - 375,
     borderTopLeftRadius: 24,
     position: "absolute",
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   loginButton: {
-    width: 335,
+    width: width - 27,
     height: 65,
     backgroundColor: colors.PRIMARY,
     borderRadius: 24,
