@@ -4,12 +4,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./screens/login-screen";
 import RegisterScreen from "./screens/register-screen";
 import ForgotPasswordScreen from "./screens/forgotPassword-screen";
+import FirstScreen from "./screens/getStarted-screen";
 
 const StackAuth = createNativeStackNavigator();
 
 function Navigator() {
   return (
-    <StackAuth.Navigator initialRouteName="Login">
+    <StackAuth.Navigator initialRouteName="FirstScreen">
       <StackAuth.Screen
         name="Login"
         component={LoginScreen}
@@ -23,6 +24,11 @@ function Navigator() {
       <StackAuth.Screen
         name="ForgotPassword"
         component={ForgotPasswordScreen}
+        options={{ headerShown: false }}
+      />
+      <StackAuth.Screen
+        name="FirstScreen"
+        component={FirstScreen}
         options={{ headerShown: false }}
       />
     </StackAuth.Navigator>
