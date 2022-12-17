@@ -6,6 +6,7 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
+  AsyncStorage,
   KeyboardAvoidingView,
 } from "react-native";
 import { styles } from "../styles/LoginScreen.styles";
@@ -33,7 +34,10 @@ export default function LoginScreen({ navigation }): JSX.Element {
         >
           <Text style={styles.bottomTextBlue}>Forgot Password?</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity
+          onPress={async () => await AsyncStorage.setItem("key", "secretkey")}
+          style={styles.loginButton}
+        >
           <Text style={styles.textLoginButton}>Login</Text>
         </TouchableOpacity>
         <View style={styles.bottomTextContainer}>

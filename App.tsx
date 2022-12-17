@@ -1,20 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
-import { Navigator } from "./src";
+import { AuthNavigator } from "./src/auth";
+import { HomeNavigator } from "./src";
+
+const isLogin = async () => (await AsyncStorage.getItem("key")) === null;
 
 export default function App() {
+  if (isLogin()._A === null) {
+    return (
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
+    );
+  }
+
   return (
     <NavigationContainer>
-      <Navigator />
+      <HomeNavigator />
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
