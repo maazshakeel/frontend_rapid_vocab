@@ -1,17 +1,51 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import {
   Text,
   View,
   Image,
   TextInput,
-  SafeAreaView,
   TouchableOpacity,
   KeyboardAvoidingView,
 } from "react-native";
-import { styles } from "../styles/LoginScreen.styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function LoginScreen({ navigation }): JSX.Element {
+import { styles } from "../styles/LoginScreen.styles";
+import UserContext from "../components/User/User";
+import { StackActions } from "@react-navigation/native";
+
+export default function LoginScreen({
+  navigation,
+}: {
+  navigation: any;
+}): JSX.Element {
+  const onSubmit = async () => {
+    await AsyncStorage.setItem("key", "secretkey");
+    user.loggedIn = true;
+    navigation.dispatch(
+      StackActions.replace("HomeScreen", {
+        token: "secretkey",
+      })
+    );
+    return;
+  };
+
+  const user = useContext(UserContext);
+
+  const onRefresh = async () => {
+    if (await AsyncStorage.getItem("key")) {
+      console.log("Logged in");
+    }
+    return;
+  };
+
+  const logToken = async () => console.log(await AsyncStorage.getItem("key"));
+
+  useEffect(() => {
+    logToken();
+    onRefresh();
+    console.log("Reloading...");
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -34,10 +68,7 @@ export default function LoginScreen({ navigation }): JSX.Element {
         >
           <Text style={styles.bottomTextBlue}>Forgot Password?</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={async () => await AsyncStorage.setItem("key", "secretkey")}
-          style={styles.loginButton}
-        >
+        <TouchableOpacity onPress={onSubmit} style={styles.loginButton}>
           <Text style={styles.textLoginButton}>Login</Text>
         </TouchableOpacity>
         <View style={styles.bottomTextContainer}>
