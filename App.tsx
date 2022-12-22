@@ -1,22 +1,23 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { NavigationContainer } from "@react-navigation/native";
 import { AuthNavigator } from "./src/auth";
 import { HomeNavigator } from "./src";
+import AppContainer from "./src/components/app-container";
 
 const isLogin = async () => (await AsyncStorage.getItem("key")) === null;
 
 export default function App() {
+  // @ts-ignore
   if (isLogin()._A === null) {
     return (
-      <NavigationContainer>
+      <AppContainer>
         <AuthNavigator />
-      </NavigationContainer>
+      </AppContainer>
     );
   }
 
   return (
-    <NavigationContainer>
+    <AppContainer>
       <HomeNavigator />
-    </NavigationContainer>
+    </AppContainer>
   );
 }
