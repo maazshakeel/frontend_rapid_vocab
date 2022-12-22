@@ -6,10 +6,10 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
-  AsyncStorage,
   KeyboardAvoidingView,
 } from "react-native";
 import { styles } from "../styles/LoginScreen.styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function LoginScreen({ navigation }): JSX.Element {
   return (

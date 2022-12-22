@@ -1,7 +1,13 @@
 import { StyleSheet } from "react-native";
 import colors from "../theme";
 
-import { width, height } from "../utils/dimension.utils";
+import {
+  width,
+  height,
+  verticalScale,
+  horizontalScale,
+  moderateScale,
+} from "../utils/dimension.utils";
 
 console.log(width, height);
 
@@ -12,27 +18,27 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     alignItems: "center",
-    marginTop: 45,
+    marginTop: verticalScale(110),
   },
   headerImage: {
     resizeMode: "stretch",
-    width: width,
+    width: horizontalScale(160),
     justifyContent: "center",
-    height: height - 240,
+    height: verticalScale(470),
   },
   headerText: {
     fontWeight: "bold",
-    fontSize: 30,
+    fontSize: moderateScale(15),
     color: "white",
-    marginTop: 25,
+    marginTop: verticalScale(10),
     fontFamily: "serif",
     alignSelf: "center",
   },
   inputContainer: {
     justifyContent: "center",
     backgroundColor: "white",
-    width: 385,
-    height: height - 600,
+    width: horizontalScale(380),
+    height: verticalScale(200),
     borderTopLeftRadius: 24,
     position: "absolute",
     bottom: 0,
