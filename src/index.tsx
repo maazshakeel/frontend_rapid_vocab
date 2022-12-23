@@ -6,6 +6,7 @@ import LoginScreen from "./screens/login-screen";
 import RegisterScreen from "./screens/register-screen";
 import ForgotPasswordScreen from "./screens/forgotPassword-screen";
 import FirstScreen from "./screens/getStarted-screen";
+import TesterNav from "./components/drawer-navigator";
 
 const HomeStack = createNativeStackNavigator();
 
@@ -14,7 +15,7 @@ function HomeNavigator() {
     <HomeStack.Navigator initialRouteName="Login">
       <HomeStack.Screen
         name="HomeScreen"
-        component={HomeScreen}
+        component={TesterNav}
         options={{ headerShown: false }}
       />
 
