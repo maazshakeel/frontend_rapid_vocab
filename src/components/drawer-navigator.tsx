@@ -7,6 +7,7 @@ import ForgotPasswordScreen from "../screens/forgotPassword-screen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "../screens/home-screen";
+import colors from "../theme";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -27,16 +28,15 @@ function TesterNav() {
     <Drawer.Navigator
       screenOptions={{
         drawerStyle: {
-          backgroundColor: "#c6cbef", //Set Drawer background
+          backgroundColor: "#fff", //Set Drawer background
           width: 250, //Set Drawer width
-        },
-        headerStyle: {
-          backgroundColor: "#f4511e", //Set Header color
         },
         headerTintColor: "#fff", //Set Header text color
         headerTitleStyle: {
           fontWeight: "bold", //Set Header text style
         },
+        headerTransparent: true,
+        headerTitle: "",
       }}
     >
       <Drawer.Screen
