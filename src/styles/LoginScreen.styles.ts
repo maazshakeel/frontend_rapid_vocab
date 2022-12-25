@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: "center",
     backgroundColor: "white",
-    width: 385,
+    width: width,
     height: height - 400,
     borderTopLeftRadius: 24,
     position: "absolute",
@@ -43,8 +43,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.GREY,
     width: width - 27,
     height: 65,
-    marginTop: 15,
+    marginTop: 5,
     borderRadius: 24,
+    fontSize: 15,
+    paddingLeft: 50,
+  },
+  passInput: {
     fontSize: 15,
     paddingLeft: 50,
   },
