@@ -53,7 +53,7 @@ export default function HomeScreen({ navigation }) {
           _text={{
             fontSize: 18,
           }}
-          onPress={() => navigation.openDrawer()}
+          onPress={() => navigation.navigate("HowManyQuestions")}
         >
           Start learning
         </Button>

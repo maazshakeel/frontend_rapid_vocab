@@ -1,0 +1,132 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./rapid.db"
+}
+
+// client database
+model Client {
+  id         String       @id @default(uuid())
+  createdAt  DateTime     @default(now())
+  name       String
+  email      String       @unique
+  verified   Boolean      @default(false)
+  password   String
+  token      String?
+  Complaints Complaints[]
+}
+
+// Complaints 
+model Words {
+  id String @id @default(uuid())
+
+  word              String              @unique
+  appeardTimes      I
+  ComplaintDetails  ComplaintDetails[]
+  ComplaintCategory ComplaintCategory[]
+  ComplaintType     ComplaintType[]
+  ComplaintStatus   ComplaintStatus[]
+  client            Client?              @relation(fields: [clientId], references: [id])
+  clientId          String?
+}
+
+model ComplaintDetails {
+  id                       String  @id @default(uuid())
+  complaintDetail          String
+  complaintSelectedOptions String?
+  isUrgent                 Boolean
+
+  complaint Complaints[]
+}
+
+model ComplaintCategory {
+  id        String       @id @default(uuid())
+  name      String
+  complaint Complaints[]
+}
+
+model ComplaintType {
+  id        String       @id @default(uuid())
+  type      String
+  complaint Complaints[]
+}
+
+model ComplaintStatus {
+  id         String       @id @default(uuid())
+  whenRaised DateTime     @default(now())
+  isResolved Boolean
+  isClosed   Boolean
+  complaint  Complaints[]
+}
+
+// Worker - Staff
+model Worker {
+  id               String             @id @default(uuid())
+  createdAt        DateTime           @default(now())
+  firstName        String
+  lastName         String
+  cnic             String             @unique
+  email            String             @unique
+  phoneNo          String             @unique
+  password         String
+  department       String
+  token            String
+  complaints       Complaints?        @relation(fields: [complaintsId], references: [id])
+  WorkerDepartment WorkerDepartment[]
+  complaintsId     String?            @unique
+}
+
+model WorkerDepartment {
+  id       String @id @default(uuid())
+  type     String
+  worker   Worker @relation(fields: [workerId], references: [id])
+  workerId String
+}
+
+// Manager 
+model Manager {
+  id                String              @id @default(uuid())
+  createdAt         DateTime            @default(now())
+  firstName         String
+  lastName          String
+  cnic              String              @unique
+  email             String              @unique
+  phoneNo           String              @unique
+  password          String
+  department        String
+  token             String
+  ManagerDepartment ManagerDepartment[]
+}
+
+model ManagerDepartment {
+  id        String  @id @default(uuid())
+  type      String
+  manger    Manager @relation(fields: [managerId], references: [id])
+  managerId String
+}
+
+// Head
+model Head {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  firstName String
+  lastName  String
+  cnic      String   @unique
+  email     String   @unique
+  phoneNo   String   @unique
+  password  String
+  token     String
+}
+
+// enum Role {
+//   CLIENT
+//   WORKER
+//   MANAGER
+//   HEAD
+// }

@@ -8,6 +8,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "../screens/home-screen";
 import colors from "../theme";
+import { width } from "../utils/dimension.utils";
+import AskQuestion from "../screens/askQuestionQuiz-screen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -19,6 +21,7 @@ const FirstScreenStack = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="FirstScreen" component={HomeScreen} />
+      <Stack.Screen name="HowManyQuestions" component={AskQuestion} />
     </Stack.Navigator>
   );
 };
@@ -29,7 +32,7 @@ function TesterNav() {
       screenOptions={{
         drawerStyle: {
           backgroundColor: "#fff", //Set Drawer background
-          width: 250, //Set Drawer width
+          width: width / 2 + 75, //Set Drawer width
         },
         headerTintColor: "#fff", //Set Header text color
         headerTitleStyle: {
