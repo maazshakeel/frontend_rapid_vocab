@@ -1,0 +1,9 @@
+[
+  {
+    id: 3,
+    word: 'see',
+    meaning: 'lihat',
+    options: { A: 'jalan kaki', B: 'melakukan', C: 'lihat', D: 'kalah' },
+    correctOption: 'C'
+  }
+]

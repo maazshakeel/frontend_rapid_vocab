@@ -8,6 +8,7 @@ import ForgotPasswordScreen from "./screens/forgotPassword-screen";
 import FirstScreen from "./screens/getStarted-screen";
 import TesterNav from "./components/drawer-navigator";
 import QuizScreen from "./screens/quiz-screen";
+import TestScreen from "./screens/test-screen";
 
 const HomeStack = createNativeStackNavigator();
 
@@ -17,6 +18,11 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="HomeScreen"
         component={TesterNav}
+        options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="Testing"
+        component={TestScreen}
         options={{ headerShown: false }}
       />
       <HomeStack.Screen

@@ -1,0 +1,7 @@
+STEP 1: Get all words
+STEP 2: Get random word id from the list (above)
+STEP 3: Check if the word is not already added to the list -> list of words to return
+STEP 4: Make random choices for that word 
+STEP 5: Append the correct choice after that
+STEP 6: Generate random indexes
+STEP 7: Return

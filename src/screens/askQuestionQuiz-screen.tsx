@@ -1,9 +1,11 @@
 import { Input, Button } from "native-base";
-import { View, Text, SafeAreaView, Image } from "react-native";
+import { useState } from "react";
+import { View, SafeAreaView } from "react-native";
 import colors from "../theme";
-import { height, width } from "../utils/dimension.utils";
+import { width } from "../utils/dimension.utils";
 
 export default function AskQuestion({ navigation }: { navigation: any }) {
+  const [numberOfQuestions, setNumberOfQuestions] = useState("");
   return (
     <View
       style={{
@@ -29,6 +31,8 @@ export default function AskQuestion({ navigation }: { navigation: any }) {
             width={width - 100}
             borderRadius="18"
             borderColor={colors.GREY}
+            // @ts-ignore
+            onChangeText={(newNumber) => setNumberOfQuestions(newNumber)}
             mt="1"
             bottom="0"
             height="65"
@@ -53,7 +57,11 @@ export default function AskQuestion({ navigation }: { navigation: any }) {
             _text={{
               fontSize: 18,
             }}
-            onPress={() => navigation.navigate("QuizScreen")}
+            onPress={() =>
+              navigation.navigate("QuizScreen", {
+                numberOfQuestions,
+              })
+            }
           >
             Start learning
           </Button>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { questions } from "../static/data";
 import colors from "../theme";
 import {
@@ -14,7 +14,9 @@ import {
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { width } from "../utils/dimension.utils";
 
-export default function QuizScreen() {
+// @ts-ignore
+export default async function QuizScreen({ navigation }) {
+  // const allQuestions = await words(route.params.numberOfQuestions);
   const allQuestions = questions;
 
   /* state - BEGIN */
@@ -216,7 +218,7 @@ export default function QuizScreen() {
           style={{
             marginTop: 20,
             width: "100%",
-            backgroundColor: colors.accent,
+            backgroundColor: colors.PRIMARY,
             padding: 20,
             borderRadius: 5,
           }}
@@ -269,6 +271,9 @@ export default function QuizScreen() {
   };
   /* Render Progress Bar - END */
 
+  /* useEffect - BEGIN */
+  /* useEffect - END */
+
   return (
     <SafeAreaView
       style={{
@@ -306,7 +311,7 @@ export default function QuizScreen() {
           <View
             style={{
               flex: 1,
-              backgroundColor: colors.primary,
+              backgroundColor: colors.background,
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -354,9 +359,9 @@ export default function QuizScreen() {
               </View>
               {/* Retry Quiz button */}
               <TouchableOpacity
-                onPress={restartQuiz}
+                onPress={() => navigation.navigate("Testing")}
                 style={{
-                  backgroundColor: colors.accent,
+                  backgroundColor: colors.PRIMARY,
                   padding: 20,
                   width: "100%",
                   borderRadius: 20,

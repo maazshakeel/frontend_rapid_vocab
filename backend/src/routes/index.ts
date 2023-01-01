@@ -1,16 +1,16 @@
 // imports
 import express from "express";
 import user from "./user.routes";
-import complaints from './complaints.route'
+import complaints from "./rapid.route";
 
 // router
 const router = express.Router();
 
-// testing if it is working 
+// testing if it is working
 router.get("/healthcheck", (_, res) => res.sendStatus(200));
 
 router.use(user);
-router.use(complaints)
+router.use(complaints);
 
 // exporting
 export default router;

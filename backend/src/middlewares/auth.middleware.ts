@@ -1,10 +1,10 @@
-import jwt from 'jsonwebtoken'
-import env from 'dotenv'
-import { Request, Response, NextFunction } from 'express';
+import jwt from "jsonwebtoken";
+import env from "dotenv";
+import { Request, Response, NextFunction } from "express";
 
 const config = process.env;
 
-const TOKEN_KEY: string = "^)<FT#ZwJ4?Xl'<<<<>>>>>>>bCpmp+<<<<>>>}ApotSTO"
+const TOKEN_KEY: string = "^)<FT#ZwJ4?Xl'<<<<>>>>>>>bCpmp+<<<<>>>}ApotSTO";
 
 const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   const token =
@@ -16,7 +16,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   }
   try {
     const decoded = jwt.verify(token, TOKEN_KEY);
-    console.log(decoded)
+    console.log(decoded);
     // req.user = decoded;
   } catch (err) {
     return res.status(401).send("Invalid Token");
@@ -24,4 +24,4 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   return next();
 };
 
-export { verifyToken }
+export { verifyToken };

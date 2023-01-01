@@ -1,3 +1,23 @@
+import client from "./api";
+
+const words = async (numberOfWords: number) => {
+  const rows = await client.get(`/api/words/${numberOfWords}`);
+  // @ts-ignore
+  const newData = [];
+  // @ts-ignore
+  rows.data.words.map((word) => {
+    newData.push({
+      id: word.id,
+      word: word.word,
+      meaning: word.meaning,
+      options: [word.options.A, word.options.B, word.options.C, word.options.D],
+      correctOption: word.meaning,
+    });
+  });
+  // @ts-ignore
+  return newData;
+};
+
 interface IObjectFormat {
   id: number;
   word: string;
@@ -18,38 +38,23 @@ const questions: IObjectFormat[] = [
     id: 2,
     word: "have",
     meaning: "memiliki",
-    options:[ 
-      "akan",
-      "tahu",
-      "memiliki",
-      "dichara",
-    ],
+    options: ["akan", "tahu", "memiliki", "dichara"],
     correctOption: "memiliki",
   },
   {
     id: 3,
     word: "Will",
     meaning: "akan",
-    options: [ 
-      "berbichara",
-      "dingin",
-      "akan",
-      "bangat",
-    ],
+    options: ["berbichara", "dingin", "akan", "bangat"],
     correctOption: "akan",
   },
   {
     id: 4,
     word: "use",
     meaning: "gunakan",
-    options:[ 
-      "gw",
-      "lo",
-      "ghila",
-      "gunakan",
-    ],
+    options: ["gw", "lo", "ghila", "gunakan"],
     correctOption: "gunakan",
   },
 ];
 
-export { questions };
+export { questions, words };

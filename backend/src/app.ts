@@ -1,15 +1,15 @@
 // imports..
-import express from 'express'
-import router from './routes'
+import express from "express";
+import router from "./routes";
 
 // app
-const app = express()
+const app = express();
 
 // middlewares
-app.use(express.json())
+app.use(express.json());
 
 // routes
-app.use(router)
+app.use(router);
 
 // running server
-app.listen(8000, '127.0.0.1', () => console.log('Server is running!'))
+app.listen(8000, "192.168.99.235", () => console.log("Server is running!"));
