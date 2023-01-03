@@ -11,11 +11,7 @@ export default function HomeScreen({ navigation }) {
   const logToken = async () => console.log(await AsyncStorage.getItem("key"));
   const onLogOut = async () => {
     await AsyncStorage.removeItem("key");
-    navigation.dispatch(
-      StackActions.replace("Login", {
-        token: "secretkey",
-      })
-    );
+    navigation.dispatch(StackActions.replace("Login"));
   };
 
   useEffect(() => {
@@ -56,6 +52,23 @@ export default function HomeScreen({ navigation }) {
           onPress={() => navigation.navigate("HowManyQuestions")}
         >
           Start learning
+        </Button>
+        <Button
+          style={{
+            backgroundColor: colors.PRIMARY,
+            alignSelf: "center",
+            borderRadius: 30,
+          }}
+          maxW="400"
+          height="70"
+          width="320"
+          mt="10"
+          _text={{
+            fontSize: 18,
+          }}
+          onPress={onLogOut}
+        >
+          Log Out
         </Button>
       </Box>
     </View>

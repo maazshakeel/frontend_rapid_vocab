@@ -10,6 +10,8 @@ import HomeScreen from "../screens/home-screen";
 import colors from "../theme";
 import { width } from "../utils/dimension.utils";
 import AskQuestion from "../screens/askQuestionQuiz-screen";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Text } from "react-native";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();

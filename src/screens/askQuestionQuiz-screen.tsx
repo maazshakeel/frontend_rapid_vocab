@@ -1,10 +1,22 @@
-import { Input, Button } from "native-base";
-import { useState } from "react";
+import { Input, Button, Alert } from "native-base";
+import { useEffect, useState } from "react";
 import { View, SafeAreaView } from "react-native";
 import colors from "../theme";
 import { width } from "../utils/dimension.utils";
 
 export default function AskQuestion({ navigation }: { navigation: any }) {
+  const submitting = () => {
+    if (isNaN(parseFloat(numberOfQuestions))) {
+      alert("Invalid input!");
+      return;
+    }
+    navigation.navigate("QuizScreen", {
+      numberOfQuestions,
+    });
+  };
+  useEffect(() => {
+    setNumberOfQuestions("");
+  }, []);
   const [numberOfQuestions, setNumberOfQuestions] = useState("");
   return (
     <View
@@ -30,6 +42,7 @@ export default function AskQuestion({ navigation }: { navigation: any }) {
             placeholder="How many questions?"
             width={width - 100}
             borderRadius="18"
+            keyboardType="numeric"
             borderColor={colors.GREY}
             // @ts-ignore
             onChangeText={(newNumber) => setNumberOfQuestions(newNumber)}
@@ -57,11 +70,7 @@ export default function AskQuestion({ navigation }: { navigation: any }) {
             _text={{
               fontSize: 18,
             }}
-            onPress={() =>
-              navigation.navigate("QuizScreen", {
-                numberOfQuestions,
-              })
-            }
+            onPress={submitting}
           >
             Start learning
           </Button>
