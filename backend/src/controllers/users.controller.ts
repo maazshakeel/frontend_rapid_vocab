@@ -5,6 +5,7 @@ import env from "dotenv";
 env.config();
 // @ts-ignore
 import bcrypt from "bcryptjs";
+import { db } from "../../prisma/connectToDB";
 
 // import types
 import { TCreateClient } from "../types/user.type";
@@ -13,32 +14,6 @@ const TOKEN_KEY: string = "^)<FT#ZwJ4?Xl'<<<<>>>>>>>bCpmp+<<<<>>>}ApotSTO";
 
 // prisma client
 const prisma = new PrismaClient();
-
-const clientId = async (req: Request, res: Response) => {
-  if (!req.body.email) return res.send("Please provide email!");
-
-  const user_token = req.headers["x-access-token"];
-  async function main() {
-    const clientId = await prisma.client.findFirst({
-      where: {
-        email: req.body.email,
-      },
-      select: {
-        id: true,
-      },
-    });
-    console.log(clientId);
-    return res.send(clientId?.id);
-  }
-  // check errors
-  main()
-    .catch((e) => {
-      res.send({ status: "error", message: e.message });
-    })
-    .finally(async () => {
-      await prisma.$disconnect();
-    });
-};
 
 const createUser = async (req: Request, res: Response) => {
   let { email, password, verified }: TCreateClient = req.body;
@@ -76,7 +51,24 @@ const createUser = async (req: Request, res: Response) => {
         password: hashedPass,
         verified,
       },
+      select: {
+        name: true,
+        id: true,
+        email: true,
+      },
     });
+
+    db.run(
+      `CREATE TABLE [${user.id}] (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, word TEXT NOT NULL, meaning TEXT NOT NULL, appeardTimes INTEGER NOT NULL, rightTimes INTEGER NOT NULL, wrongTimes INTEGER NOT NULL);`,
+      (err) => {
+        if (err) {
+          console.log(err);
+          throw err;
+        }
+      }
+    );
+
+    db.close();
 
     // send request to client
     return res.send({
@@ -172,40 +164,8 @@ const logIn = async (req: Request, res: Response) => {
     });
 };
 
-const getClientData = async (req: Request, res: Response) => {
-  console.log(req.headers["x-access-token"]);
-
-  async function main() {
-    const response = await prisma.client.findFirst({
-      where: {
-        token: req.headers["x-access-token"],
-      },
-      select: {
-        createdAt: true,
-        firstName: true,
-        lastName: true,
-        cnic: true,
-        email: true,
-        phoneNo: true,
-        verified: true,
-        block: true,
-        homeNo: true,
-      },
-    });
-    console.log(response);
-    return res.send(response);
-  }
-  main()
-    .catch((e) => {
-      res.send({ status: "error", error: e });
-    })
-    .finally(async () => {
-      await prisma.$disconnect();
-    });
-};
-
-const welcome = (req: Request, res: Response) => {
+const welcome = (_: any, res: Response) => {
   res.status(200).send("Welcome 🙌 ");
 };
 
-export { createUser, welcome, clientId, logIn, getClientData };
+export { createUser, welcome, logIn };

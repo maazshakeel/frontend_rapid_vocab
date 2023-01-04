@@ -1,6 +1,6 @@
 import express, { application, Request, response, Response } from 'express'
 import { verify } from 'jsonwebtoken'
-import { createUser, getClientData, welcome, logIn, clientId } from '../controllers/users.controller'
+import { createUser, welcome, logIn, clientId } from '../controllers/users.controller'
 import { verifyToken } from '../middlewares/auth.middleware'
 
 const router = express.Router()
@@ -13,12 +13,6 @@ router.post(
 router.post(
   '/api/login',
   logIn
-)
-
-router.get(
-  '/api/client_data',
-  verifyToken,
-  getClientData
 )
 
 router.post(
