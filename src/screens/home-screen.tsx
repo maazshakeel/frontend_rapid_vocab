@@ -53,23 +53,6 @@ export default function HomeScreen({ navigation }) {
         >
           Start learning
         </Button>
-        <Button
-          style={{
-            backgroundColor: colors.PRIMARY,
-            alignSelf: "center",
-            borderRadius: 30,
-          }}
-          maxW="400"
-          height="70"
-          width="320"
-          mt="10"
-          _text={{
-            fontSize: 18,
-          }}
-          onPress={onLogOut}
-        >
-          Log Out
-        </Button>
       </Box>
     </View>
   );
